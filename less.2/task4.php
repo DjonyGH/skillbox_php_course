@@ -31,6 +31,26 @@ $result3 = [
     ]
 ];
 
+$red = (bool)rand(0,1);
+
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заголовок</title>
+    <style type="text/css">.red {color: red;}</style>
+</head>
+<body>
+<h1
+<?php if ($red) {
+    ?> class="red" <?php    
+}?> 
+>Заголовок</h1>
+<div>Авторов на портале: <?php echo count($result3['authors'])?></div>
+<!-- Выведите все книги -->
+<?php
 foreach ($result3['books'] as $book) {
     ?> <p> Книга: "<?php echo $book['name']; ?>", ее написал <?php foreach ($result3['authors'] as $author => $author_info) {
         if ($author === $book['author']) {
@@ -40,5 +60,7 @@ foreach ($result3['books'] as $book) {
     } ?></p>
 <?php
 };
+?>
 
-
+</body>
+</html>
