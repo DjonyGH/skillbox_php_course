@@ -32,12 +32,7 @@ $result3 = [
 ];
 
 foreach ($result3['books'] as $book) {
-    ?> <p> Книга: "<?php echo $book['name']; ?>", ее написал <?php foreach ($result3['authors'] as $author => $author_info) {
-        if ($author === $book['author']) {
-            echo $author_info['fio']; 
-            echo $author_info['birthDay'];
-        }
-    } ?></p>
+    ?> <p> Книга: "<?php echo $book['name']; ?>", ее написал <?php echo $result3['authors'][$book['author']]['fio']?></p>
 <?php
 };
 
