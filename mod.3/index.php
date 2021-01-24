@@ -1,7 +1,7 @@
 <?php
 $login = 'djony';
 $pass = 'pass';
-$_REQUEST['login'] = 'yes';
+
 $login_form = '';
 $pass_form = '';
 
@@ -55,7 +55,7 @@ if (isset($_POST['sendedForm'])) {
 				<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/success.php'; ?>
 			
             </td>
-            <?php if ($_REQUEST['login'] === 'yes') {?>
+            <?php if (($_GET['login'] === 'yes') || $isAuth === false) {?>
             <td class="right-collum-index">
 				
 				<div class="project-folders-menu">
