@@ -27,9 +27,13 @@ chbDelete.forEach(item => {
 });
 
 btnDeleteImg.addEventListener('click', async () => {
-    const res  = await fetch ('../delete_img.php', {
+    // console.log(selectedImages.join());
+    const res  = await fetch ('index.php?delete=true', {
         method: 'POST',
-        body: selectedImages
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(selectedImages)
     });
     window.location.reload();
 

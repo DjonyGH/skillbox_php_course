@@ -11,6 +11,15 @@ foreach (scandir($uploadPath) as $file) {
     }
 };
 
+
+if ($_GET['delete'] === 'true') {
+    var_dump($_REQUEST);
+    // $uploadPath = $_SERVER['DOCUMENT_ROOT'].'/upload/';
+    unlink($uploadPath.'basket.png');
+}
+
+var_dump($_REQUEST);
+
 ?>
 
 <!DOCTYPE html>
