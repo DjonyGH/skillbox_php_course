@@ -37,13 +37,15 @@ a:hover {
     padding: 0;
     margin: 0 0 10px 0;
     border: none;
+    display: flex;
+    flex-direction: column;
 }
 
 .logo {
     float: left;
     margin: 0 10px 0 0;
     padding: 0;
-    border: none;
+    border: none;    
 }
 
 .logo img {
@@ -192,4 +194,15 @@ a:hover {
 
 .iat label {
 	display: block;
+}
+
+.page-content {
+    background: #ffffff;
+    margin: 0;
+    padding: 10px;
+}
+.page-content h1 {
+    font-size: 1.4em;
+    color: #000000;
+    margin: 0 0 10px 0;
 }

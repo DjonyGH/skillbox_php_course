@@ -21,7 +21,7 @@ chbDelete.forEach(item => {
     
 });
 
-//отправляем выбранные изображения в формате json методом post
+//отправляем выбранные изображения в формате json методом
 btnDeleteImg.addEventListener('click', async () => {
     const res  = await fetch (`../delete_img.php?delete=true&deletedImd=${JSON.stringify(selectedImages)}`, {
         method: 'POST',

@@ -33,8 +33,11 @@ $menu = [
 ];
 
 function arraySort($array, $key, $sort) {
-  usort($array, function($a, $b){
-    return ($a[$key] > $b[$key]);   
+  usort($array, function($a, $b) use($key, $sort) {
+    if ($sort === 'SORT_ASC') {
+      return ($a[$key] > $b[$key]);
+    } elseif ($sort === 'SORT_DESC') {}
+      return ($a[$key] < $b[$key]);
   });
   return $array;
 };
@@ -46,22 +49,41 @@ function showMenu($menu, $isInHeader=true) {
       <ul class='main-menu'>
           <?php
             foreach ($menu as $itemMenu) {
-              ?><li><a href="<?=$itemMenu['path']?>"><?=$itemMenu['title']?></a></li><?php
+              ?>
+                <li>
+                  <a href="<?=$itemMenu['path']?>" style="font-size: 16px;<?= ($_SERVER['REQUEST_URI'] === $itemMenu['path']) ? "text-decoration: underline" : "text-decoration: none" ?>">
+                    <?=$itemMenu['title']?>
+                  </a>
+                </li>
+              <?php
             }
           ?>
       </ul>        
     <?php   
   } else {
-
+    $menu = arraySort($menu, 'title', 'SORT_ASC');
     ?>
       <ul class='main-menu bottom'>
           <?php
             foreach ($menu as $itemMenu) {
-              ?><li><a href="<?=$itemMenu['path']?>"><?=$itemMenu['title']?></a></li><?php
+              ?>
+                <li>
+                  <a href="<?=$itemMenu['path']?>" style="font-size: 12px;">
+                    <?=$itemMenu['title']?>
+                  </a>
+                </li>
+              <?php
             }
           ?>
       </ul>        
     <?php
 
   }
+};
+
+
+foreach ($menu as $itemMenu) {
+  if ($_SERVER['REQUEST_URI'] === $itemMenu['path']) {
+      $title = $itemMenu['title'];
+  };
 };

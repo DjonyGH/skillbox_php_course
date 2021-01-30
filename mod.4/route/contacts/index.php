@@ -1,9 +1,13 @@
 <?php
     require_once($_SERVER['DOCUMENT_ROOT'].'/templates/header.php');
 ?>
+<div class="page-content">
+    <h1>
+        <?= $title; ?>
+    </h1>
+    <p>Здесь будет контент страницы "Контакты".</p>
+</div>
 
-<h1>Контакты</h1>
-<p>Здесь будет контент страницы "Контакты".</p>
 
 <?php
     require_once($_SERVER['DOCUMENT_ROOT'].'/templates/footer.php');
