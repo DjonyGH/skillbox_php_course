@@ -1,17 +1,12 @@
 console.log('test');
 
-// const downloadImg = document.addEventListener('click', async () => {
-//     const response = await fetch('index.php', {
-//         method: 'POST',
-//         enctype: 'multypart/form-data'
-//     })
-// })
-
 const btnDeleteImg = document.querySelector('#btnDeleteImg');
 const chbDelete = document.querySelectorAll('.chbDelete');
 
+// массив для выбранных изображений
 let selectedImages = [];
 
+// заполняем массив selectedImages выбранными изображениями 
 chbDelete.forEach(item => {
     item.addEventListener('change', () => {
         if (item.checked) {
@@ -26,15 +21,16 @@ chbDelete.forEach(item => {
     
 });
 
+//отправляем выбранные изображения в формате json методом post
 btnDeleteImg.addEventListener('click', async () => {
-    // console.log(selectedImages.join());
-    const res  = await fetch ('index.php?delete=true', {
+    const res  = await fetch (`../delete_img.php?delete=true&deletedImd=${JSON.stringify(selectedImages)}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(selectedImages)
     });
-    window.location.reload();
+    console.log(res.status);
+
 
 })

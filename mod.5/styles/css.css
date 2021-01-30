@@ -13,7 +13,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;    
 }
 .imgBox{
     margin-top: 30px;
@@ -22,9 +22,10 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    align-items: center; 
 }
 .imgBox img{
-    width: 150px;   
+    width: 250px;   
 }
 .imgBox p{
     text-align: center;   

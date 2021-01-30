@@ -3,6 +3,8 @@
 $uploadPath = $_SERVER['DOCUMENT_ROOT'].'/upload/';
 // массив для файлов с расширением jpeg, jpg, png
 $images = [];
+
+// заполняем массив $images именами файлов-изображений, которые находятся в папке upload
 foreach (scandir($uploadPath) as $file) {
     $posEx = strripos($file, '.');
     $ex = mb_substr($file, $posEx);
@@ -10,15 +12,6 @@ foreach (scandir($uploadPath) as $file) {
         array_push($images, $file);
     }
 };
-
-
-if ($_GET['delete'] === 'true') {
-    var_dump($_REQUEST);
-    // $uploadPath = $_SERVER['DOCUMENT_ROOT'].'/upload/';
-    unlink($uploadPath.'basket.png');
-}
-
-var_dump($_REQUEST);
 
 ?>
 
@@ -39,7 +32,10 @@ var_dump($_REQUEST);
                 <div class="imgBox">
                     <img src="<?= '../upload/'.$image ?>"/>
                     <p><?= $image ?></p>
-                    <input type="checkbox" class="chbDelete" name="<?= $image ?>" id="<?= 'id-'.$image ?>">
+                    <div>
+                        <input type="checkbox" class="chbDelete" name="<?= $image ?>" id="<?= 'id-'.$image ?>">
+                        <label for="<?= $image ?>">Удалить</label>
+                    </div>                    
                 </div>            
             <?php
         }?>   
