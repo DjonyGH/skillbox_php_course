@@ -20,7 +20,7 @@ function translitNameFile($s) {
   }
 
 if (isset($_POST['upload'])) {
-    var_dump($_FILES);
+
     $uploadPath = $_SERVER['DOCUMENT_ROOT'].'/upload/';
     $uploadError = false;
 

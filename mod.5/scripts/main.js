@@ -23,14 +23,20 @@ chbDelete.forEach(item => {
 
 //отправляем выбранные изображения в формате json методом
 btnDeleteImg.addEventListener('click', async () => {
-    const res  = await fetch (`../delete_img.php?delete=true&deletedImd=${JSON.stringify(selectedImages)}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(selectedImages)
-    });
-    console.log(res.status);
+    try {
+        const res  = await fetch (`../delete_img.php?delete=true`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(selectedImages)
+        });
+        location.reload();
+        console.log("Выбранные изображения удалены");
+    } catch (error) {
+        console.log("При удалении возникла ошибка");
+    }
+    
 
 
 })

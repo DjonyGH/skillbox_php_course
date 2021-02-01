@@ -38,7 +38,16 @@ foreach (scandir($uploadPath) as $file) {
                     </div>                    
                 </div>            
             <?php
-        }?>   
+        }
+        if (count($images) < 1) {
+            ?>
+                <p>Нет загруженных изображений</p>
+                <div class="wrapper">
+                    <a class="linkToImg" href="/">Загрузить изображения</a>
+                </div>
+            <?php
+        }
+        ?>   
 
     </div>
     
