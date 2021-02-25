@@ -51,7 +51,7 @@ function showMenu($menu, $isInHeader=true) {
             foreach ($menu as $itemMenu) {
               ?>
                 <li>
-                  <a href="<?=$_SESSION['isAuth']===true ?  $itemMenu['path'] : '/'?>" style="font-size: 16px;<?= ($_SERVER['REQUEST_URI'] === $itemMenu['path']) ? "text-decoration: underline" : "text-decoration: none" ?>">
+                  <a href="<?=isset($_SESSION['isAuth']) && $_SESSION['isAuth']===true ?  $itemMenu['path'] : '/'?>" style="font-size: 16px;<?= ($_SERVER['REQUEST_URI'] === $itemMenu['path']) ? "text-decoration: underline" : "text-decoration: none" ?>">
                     <?=$itemMenu['title']?>
                   </a>
                 </li>
@@ -68,7 +68,7 @@ function showMenu($menu, $isInHeader=true) {
             foreach ($menu as $itemMenu) {
               ?>
                 <li>
-                  <a href="<?=$_SESSION['isAuth']===true ?  $itemMenu['path'] : '/'?>" style="font-size: 12px;">
+                  <a href="<?=isset($_SESSION['isAuth']) && $_SESSION['isAuth']===true ?  $itemMenu['path'] : '/'?>" style="font-size: 12px;">
                     <?=$itemMenu['title']?>
                   </a>
                 </li>

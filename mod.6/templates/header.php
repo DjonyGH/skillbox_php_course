@@ -1,9 +1,10 @@
 <?php
+error_reporting(E_ALL);
 session_start();
 
 $login = 'djony';
 $pass = 'pass';
-$login_form = $_COOKIE['login'] ? $_COOKIE['login'] : '';
+$login_form = isset($_COOKIE['login']) ? $_COOKIE['login'] : '';
 $pass_form = '';
 
 if (isset($_POST['sendedForm'])) {
@@ -13,14 +14,15 @@ if (isset($_POST['sendedForm'])) {
     if (($login_form === $login) && ($pass_form === $pass)) {
         $_SESSION['isAuth'] = true;
         $_REQUEST['login'] = 'no';
-        $login_form = $_COOKIE['login'] ? $_COOKIE['login'] : '';
+        $login_form = isset($_COOKIE['login']) && $_COOKIE['login'] ? $_COOKIE['login'] : '';
         $pass_form = '';        
     } else {
         $_SESSION['isAuth'] = false;
     }
 };
 
-if($_GET['logout'] === 'yes') {
+
+if(isset($_GET['logout']) && $_GET['logout'] === 'yes') {
     unset($_SESSION['isAuth']);
     unset($_COOKIE['login']);
     setcookie('login', null, -1);
@@ -28,8 +30,8 @@ if($_GET['logout'] === 'yes') {
     exit;
 }
 
-if ($_SESSION['isAuth']===true) {
-    if (!$_COOKIE['login']) {
+if (isset($_SESSION['isAuth']) && $_SESSION['isAuth']===true) {
+    if (!isset($_COOKIE['login'])) {
         setcookie("login", $login, time()+3600);  
     }    
 }
@@ -37,6 +39,7 @@ if ($_SESSION['isAuth']===true) {
 
 
 include($_SERVER['DOCUMENT_ROOT'] . '/main_menu.php');
+$isAuth = isset($_SESSION['isAuth']) && $_SESSION['isAuth'];
 ?>
 
 
@@ -55,7 +58,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/main_menu.php');
         <div class="navbar">
             <?php showMenu($menu) ?>
             <?php 
-            if ($_SESSION['isAuth'] === false || $_SESSION['isAuth'] === NULL) { ?>
+            if (!$isAuth) { ?>
                 <button class="navbar__btn" id="auth-btn">Авторизоваться</button>
             <?php 
             } else {?>
