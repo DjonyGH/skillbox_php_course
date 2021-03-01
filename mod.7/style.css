@@ -45,3 +45,41 @@ button {
     padding: 5px 20px 4px;
     border-radius: 5px;
 }
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile p {
+    margin-top: 10px;
+}
+
+.profile a {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #b14c4c;
+    text-decoration: none;
+}
+
+.profile h2 {
+    margin-top: 20px;
+    text-align: center;    
+}
+
+.messages {
+    margin: 10px 0;
+    display: flex;
+}
+
+.messages h3 {
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 3px;
+}
+
+.messages div {
+    width: 300px;
+    margin: 0 10px
+}
