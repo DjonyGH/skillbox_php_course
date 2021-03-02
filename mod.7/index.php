@@ -1,22 +1,16 @@
 <?php
-    session_start();
+    require_once 'templates/header.php';
 
     if (isset($_SESSION['user'])) {
         header('Location: profile.php');
         exit;
-    }
-?>
+    } 
+    
+    if (isset($_SESSION['message'])) {
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">    
-    <title>PHP - Module 7</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    }
+    
+?>
 
     <form action="includes/signin.php" method="POST">
         <h1 class="title">Authorization</h1>
@@ -26,8 +20,17 @@
         <input type="password" name="password" placeholder="Enter your password">
         <div class="controls">
             <button type="submit">Send</button>
+        </div>
+        <div class="message_error">
+        <?php        
+            if (isset($_SESSION['message'])) {
+                echo $_SESSION['message'];
+                unset($_SESSION['message']);
+            };        
+        ?>
         </div>        
     </form>
     
-</body>
-</html>
+<?php    
+    require_once 'templates/footer.php';
+?>
